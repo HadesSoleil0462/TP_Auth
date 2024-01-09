@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import {Component, LOCALE_ID, OnInit} from '@angular/core';
+import { Post } from './models/post.model';
+import {PostListComponent} from './post-list/post-list.component';
+import {HeaderComponent} from './header/header.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  imports: [PostListComponent, HeaderComponent],
+  styleUrl: './app.component.scss',
+  providers: [{provide: LOCALE_ID, useValue: 'en-US'}]
 })
-export class AppComponent {
-  title = 'acces_users_posts';
+
+export class AppComponent implements OnInit {
+
+  posts!: Post[];
+
+  ngOnInit() {}
 }
